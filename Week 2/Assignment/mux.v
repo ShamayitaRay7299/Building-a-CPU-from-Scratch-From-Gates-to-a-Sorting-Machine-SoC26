@@ -20,13 +20,15 @@ endmodule
 module mux4 #(parameter WIDTH = 8) (
     input  [WIDTH-1:0] d0, d1, d2, d3,
     input  [1:0]       sel,
-    output [WIDTH-1:0] y
+    output logic [WIDTH-1:0] y
 );
     // YOUR CODE HERE
-    assign y = 
-        (sel == 2'b00) ? d0:
-        (sel == 2'b01) ? d1:
-        (sel == 2'b10) ? d2:
-        d3;
-    
+    always @(*) begin
+        case (sel)
+            2'b00: out = d0;
+            2'b01: out = d1;
+            2'b10: out = d2;
+            2'b11: out = d3;
+        endcase
+    end
 endmodule
