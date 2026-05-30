@@ -10,4 +10,35 @@ module alu(
     output reg       carry,
     output reg       overflow
 );
+    reg [8:0] actual;
+    always @(*) begin
+        result  = 8'b0;
+        carry = 1'b0;
+        overflow = 1'b0;
+        actual = 9'b0;
+
+        case(op)
+            3'b000: begin
+                actual = a + b;
+                result = actual[7:0];
+                carry = actual[8];
+                overflow = (~(a[7]^b[7])) & (result[7] ^ a[7]);
+            end;
+            3'b001: begin
+                actual = a - b;
+                result = actual[7:0];
+                carry = actual[8];
+                overflow = (a[7]^b[7]) & (result[7] ^ a[7]);
+            end;
+            3'b010: result = a & b;
+            3'b011: result = a | b;
+            3'b100: result = a ^ b;
+            3'b101: result = a << 1;
+            3'b110: result = a >> 1;
+            default: result = 8'b0;
+        endcase
+    end
+
+    assign zero = (result == 8'b0);
+    
 endmodule
