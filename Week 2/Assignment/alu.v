@@ -36,9 +36,11 @@ module alu(
             3'b101: begin
                 carry = a[7];
                 result = a << 1;
+            end;
             3'b110: begin
                 carry = a[0];
-                result = a >> 1;                
+                result = a >> 1;      
+            end;
             default: result = 8'b0;
         endcase
     end
