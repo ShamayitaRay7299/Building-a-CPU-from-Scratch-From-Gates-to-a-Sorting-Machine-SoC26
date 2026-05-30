@@ -23,24 +23,24 @@ module alu(
                 result = actual[7:0];
                 carry = actual[8];
                 overflow = (~(a[7]^b[7])) & (result[7] ^ a[7]);
-            end;
+            end
             3'b001: begin
                 actual = a - b;
                 result = actual[7:0];
                 carry = actual[8];
                 overflow = (a[7]^b[7]) & (result[7] ^ a[7]);
-            end;
+            end
             3'b010: result = a & b;
             3'b011: result = a | b;
             3'b100: result = a ^ b;
             3'b101: begin
                 carry = a[7];
                 result = a << 1;
-            end;
+            end
             3'b110: begin
                 carry = a[0];
                 result = a >> 1;      
-            end;
+            end
             default: result = 8'b0;
         endcase
     end
