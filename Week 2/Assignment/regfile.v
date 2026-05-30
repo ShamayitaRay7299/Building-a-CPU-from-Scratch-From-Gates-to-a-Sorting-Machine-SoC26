@@ -11,6 +11,11 @@ module regfile(
 );
     reg [7:0] regs [3:0]; //4 registers, each 8 bits wide
 
+    initial begin
+		for(i = 0; i < 4; i = i + 1)
+			regs[i] = 8'h00;
+	end
+
     always @(posedge clk) begin
         if (we)
             // YOUR CODE HERE — write wdata to regs[waddr]
