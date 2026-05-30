@@ -33,8 +33,12 @@ module alu(
             3'b010: result = a & b;
             3'b011: result = a | b;
             3'b100: result = a ^ b;
-            3'b101: result = a << 1;
-            3'b110: result = a >> 1;
+            3'b101: begin
+                carry = a[7];
+                result = a << 1;
+            3'b110: begin
+                carry = a[0];
+                result = a >> 1;                
             default: result = 8'b0;
         endcase
     end
