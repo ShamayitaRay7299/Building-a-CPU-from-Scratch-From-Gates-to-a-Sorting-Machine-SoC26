@@ -8,7 +8,7 @@ module data_memory(
 
 reg [7:0] mem [0:255];      // 256 bytes memory
 
-// Initialize unsorted array
+// Initialized unsorted array
 initial begin
     mem[0] = 8'd7;
     mem[1] = 8'd3;
