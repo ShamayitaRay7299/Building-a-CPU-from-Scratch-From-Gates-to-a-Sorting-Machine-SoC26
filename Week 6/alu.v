@@ -16,7 +16,7 @@ always @(*) begin
         3'b010: result = a - b;   // SUB
         3'b011: result = a << 1;  // SHL
         3'b100: result = a >> 1;  // SHR
-        3'b101: result = 8'd0;    // CMP dummy
+        3'b101: result = 8'd0;    // CMP 
         default: result = 8'd0;
     endcase
 end
